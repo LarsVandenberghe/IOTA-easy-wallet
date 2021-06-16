@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.vscode/
+
+secrets.json
+env.ps1
+backup/
