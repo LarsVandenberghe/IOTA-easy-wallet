@@ -134,3 +134,4 @@ secrets.json
 env.ps1
 backup/
 *-database/
+tests/

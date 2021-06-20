@@ -12,12 +12,24 @@ class AccountInterface(object):
         )
         self.__account_manager.set_stronghold_password(password)
         self.__account = self.__account_manager.get_account(self.__name)
+        self.__account.sync().execute()
+
+    def get_address(self) -> str:
+        return self.__account.latest_address()['address']['inner']
         
-    def addressess(self):
-        print(self.__account.addresses())
-        
-    def balance(self):
-        print(self.__account.balance())
+    def available_balance(self) -> int:
+        return self.__account.balance()["available"]
+
+    def transfer(self, amount: int, address: str) -> None:
+        transfer = iw.Transfer(
+            amount=amount,
+            address=address,
+            remainder_value_strategy='ReuseAddress'
+        )
+
+        node_response: WalletMessage = self.__account.transfer(transfer)
+        print(node_response)
+        return node_response
         
     def backup(self):
         backup_dir_path = './backup'
