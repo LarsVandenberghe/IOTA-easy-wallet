@@ -1,6 +1,7 @@
 
 import iota_wallet as iw
 import os
+from typing import List
 
 class AccountInterface(object):
     def __init__(self, name, password):
