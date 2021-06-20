@@ -16,7 +16,7 @@ def cui_restore_account() -> None:
     manage_wallet(restore_account(file_name, username, getpass.getpass("password: ")))
 
 def cui_show_balance(interface: AccountInterface) -> None:
-    print("You available balance is: {} IOTA".format(interface.available_balance()))
+    print("Your available balance is: {} IOTA".format(interface.available_balance()))
 
 def cui_get_address(interface: AccountInterface) -> None:
     print("Your address is:", interface.get_address())
