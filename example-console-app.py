@@ -18,15 +18,18 @@ def manage_wallet(interface: AccountInterface) -> None:
     secondary_options = [
         { "description": "balance", "handler": interface.balance},
     ]
-    quit_index = len(secondary_options)+1
+    loop_over_options(secondary_options, "going back to primary options...\n")
+
+def loop_over_options(options: list, stop_message: str) -> None:
+    quit_index = len(options)+1
     while True:
         print("What do you want to do? (type number)")
-        for index, elem in enumerate(secondary_options):
+        for index, elem in enumerate(options):
             print("{}) {}".format(index+1, elem["description"]))
         print("{}) {}".format(quit_index, "quit")) 
-        should_quit = handle_choice(input(), secondary_options, quit_index)
+        should_quit = handle_choice(input(), options, quit_index)
         if should_quit:
-            print("going back to primary options...\n")
+            print(stop_message)
             break
 
 def handle_choice(choice: str, options, quit_index: int) -> bool:
@@ -44,21 +47,13 @@ def handle_choice(choice: str, options, quit_index: int) -> bool:
 
 def handle_choice_by_valid_number(choice: int, options) -> None:
     options[choice-1]["handler"]()
-    
+
+# THIS SECTION RUNS THE CODE    
 primary_options = [
     { "description": "login", "handler": cui_login},
     { "description": "create new wallet", "handler": cui_create_account},
     { "description": "restore wallet from stronghold", "handler": cui_restore_account},
 ]
+loop_over_options(primary_options, "stopping app...\n")
 
-quit_index = len(primary_options)+1
-while True:
-    print("What do you want to do? (type number)")
-    for index, elem in enumerate(primary_options):
-        print("{}) {}".format(index+1, elem["description"]))
-    print("{}) {}".format(quit_index, "quit")) 
-    should_quit = handle_choice(input(), primary_options, quit_index)
-    if should_quit:
-        print("stopping app...\n")
-        break
     
