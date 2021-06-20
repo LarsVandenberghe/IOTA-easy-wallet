@@ -20,7 +20,7 @@ class AccountInterface(object):
     def available_balance(self) -> int:
         return self.__account.balance()["available"]
 
-    def transfer(self, amount: int, address: str) -> None:
+    def transfer(self, amount: int, address: str) -> object:
         transfer = iw.Transfer(
             amount=amount,
             address=address,
@@ -39,7 +39,7 @@ class AccountInterface(object):
         
         print(f'Backup path: {backup_file_path}')
         
-    def get_backup_files(self):
+    def get_backup_files(self) -> List[str]:
         return os.listdir('./backup')
 
 def create_account(name, password, node="https://api.hornet-0.testnet.chrysalis2.com") -> AccountInterface:
