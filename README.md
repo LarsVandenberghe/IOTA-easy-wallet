@@ -14,6 +14,8 @@ A simple python IOTA wallet implementation. This module will help new developers
 
 Download the IOTA wallet wheel file on the [official documentation](https://wallet-lib.docs.iota.org/libraries/python/getting_started.html). The easiest way is to download it from the nightly link. 
 
+Install this wheel using `pip install <file_name>`.
+
 
 
 ## What is in the module?
@@ -85,14 +87,14 @@ In this section the methods for managing the logged in account are explained.
 > ### 	Balance
 > `available_balance() -> int`
 >
-> This method will return the balance on the account in IOTA. This is 1 MIOTA is 1_000_000 IOTA.
+> This method will return the balance on the account in IOTA. 1 MIOTA is 1_000_000 IOTA.
 
 
 
 > ### 	Transfer
 > `transfer(amount: int, address: str) -> object`
 >
-> This method can send tokens to other addresses. Amount is also expressed in IOTA (not in MIOTA).
+> This method can send tokens to other addresses. The amount is also expressed in IOTA (not in MIOTA).
 
 
 
@@ -109,4 +111,10 @@ In this section the methods for managing the logged in account are explained.
 > `get_backup_files() -> List[str]`
 >
 > This method will return a list of all filesnames in the `/backup` folder.
+
+
+
+## Contributing
+
+If you would like to contribute to this project, that would be awesome! Please fork the project and make a pull request on the development branch. Your code will be reviewed. 
 
